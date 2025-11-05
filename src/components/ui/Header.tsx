@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = ({ selectedVendor, currentDateTime 
             <div className="absolute left-6 top-1/2 transform -translate-y-1/2">
               <h1 className="text-2xl font-bold header-white-text flex items-center gap-2">
                 <ShoppingCart size={28} />
-                Caisse MyConfort
+                Natural Comfort
               </h1>
               {/* Version masquée sur demande utilisateur */}
               {/* <div className="text-xs header-white-text opacity-75 mt-1">
@@ -56,7 +56,7 @@ export const Header: React.FC<HeaderProps> = ({ selectedVendor, currentDateTime 
             <div className="absolute left-6 top-1/2 transform -translate-y-1/2">
               <h1 className="text-2xl font-bold header-white-text flex items-center gap-2">
                 <ShoppingCart size={28} />
-                Caisse MyConfort
+                Natural Comfort
               </h1>
               {/* Version masquée sur demande utilisateur */}
               {/* <div className="text-xs header-white-text opacity-75 mt-1">
