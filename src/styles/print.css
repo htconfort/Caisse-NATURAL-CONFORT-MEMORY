@@ -1,0 +1,518 @@
+/* Styles pour l'impression et l'affichage */
+
+/* Styles généraux pour les feuilles imprimables */
+.printable-sheet {
+  background: white;
+  border-radius: 8px;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.printable-header {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+  padding: 25px;
+  margin: -30px -30px 30px -30px;
+  border-radius: 8px 8px 0 0;
+  text-align: center;
+}
+
+.printable-header h1 {
+  margin: 0 0 10px 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.printable-header h2 {
+  margin: 0;
+  font-size: 18px;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+.printable-summary {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 10px;
+  padding: 25px;
+  margin: 20px 0;
+  border-left: 4px solid #007bff;
+}
+
+.printable-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.printable-stat {
+  text-align: center;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.printable-stat-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.printable-stat-label {
+  font-size: 12px;
+  color: #6c757d;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.printable-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.printable-table th {
+  background: #495057;
+  color: white;
+  padding: 15px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.printable-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.printable-table tr:last-child td {
+  border-bottom: none;
+}
+
+.printable-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.printable-section {
+  margin: 25px 0;
+}
+
+.printable-section h3 {
+  color: #495057;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.printable-footer {
+  background: #495057;
+  color: white;
+  padding: 20px;
+  margin: 30px -30px -30px -30px;
+  border-radius: 0 0 8px 8px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.printable-footer p {
+  margin: 5px 0;
+}
+
+.no-print {
+  /* Éléments à masquer lors de l'impression */
+}
+
+/* Styles spécifiques pour l'impression */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 8mm;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .printable-sheet {
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    width: auto !important;
+    border-radius: 0 !important;
+  }
+  
+  .printable-header {
+    background: #007bff !important;
+    color: white !important;
+    margin: 0 0 20px 0 !important;
+    border-radius: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  .printable-footer {
+    background: #495057 !important;
+    color: white !important;
+    margin: 20px 0 0 0 !important;
+    border-radius: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  .printable-summary {
+    background: #f8f9fa !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  .printable-stat {
+    background: white !important;
+    box-shadow: none !important;
+    border: 1px solid #dee2e6 !important;
+  }
+  
+  .printable-table {
+    box-shadow: none !important;
+    border: 1px solid #dee2e6 !important;
+  }
+  
+  .printable-table th {
+    background: #495057 !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  .printable-table tr:nth-child(even) {
+    background-color: #f8f9fa !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  /* Éviter les coupures de page dans les tableaux */
+  .printable-table,
+  .printable-summary,
+  .printable-section {
+    page-break-inside: avoid;
+  }
+  
+  .printable-table tr {
+    page-break-inside: avoid;
+  }
+  
+  .printable-stats {
+    page-break-inside: avoid;
+  }
+  
+  /* Assurer une bonne répartition des éléments */
+  .printable-section {
+    break-inside: avoid;
+  }
+  
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  
+  /* Optimisations spécifiques pour la feuille de caisse RAZ A4 Portrait */
+  .print-section {
+    page-break-inside: avoid;
+    margin-bottom: 6mm !important;
+  }
+  
+  .print-section table {
+    page-break-inside: auto;
+  }
+  
+  .print-section table tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+  
+  .print-section table thead {
+    display: table-header-group;
+  }
+  
+  .print-section table tfoot {
+    display: table-footer-group;
+  }
+  
+  /* Optimisation des polices pour A4 portrait */
+  .print-section h1 {
+    font-size: 18pt !important;
+    margin: 0 0 3mm 0 !important;
+  }
+  
+  .print-section h2 {
+    font-size: 14pt !important;
+    margin: 0 0 2mm 0 !important;
+  }
+  
+  .print-section h3 {
+    font-size: 10pt !important;
+    margin: 0 0 1mm 0 !important;
+  }
+  
+  /* Optimisation des tableaux pour A4 portrait */
+  .print-section table {
+    font-size: 8pt !important;
+    width: 100%;
+  }
+  
+  .print-section table th,
+  .print-section table td {
+    padding: 2mm 1mm !important;
+    border: 0.5pt solid #000 !important;
+  }
+  
+  /* Optimisation de l'événement en en-tête */
+  .print-section p[style*="color: #2563eb"] {
+    color: #000 !important;
+    background: #f0f0f0 !important;
+    padding: 2mm !important;
+    border: 1pt solid #000 !important;
+    margin: 2mm 0 !important;
+  }
+}
+
+/* Styles pour l'écran */
+@media screen {
+  .printable-sheet {
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+  
+  .printable-sheet:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+  }
+  
+  .printable-stat {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .printable-stat:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .printable-sheet {
+    margin: 10px;
+    padding: 20px;
+    border-radius: 0;
+  }
+  
+  .printable-header {
+    margin: -20px -20px 20px -20px;
+    padding: 20px;
+  }
+  
+  .printable-header h1 {
+    font-size: 22px;
+  }
+  
+  .printable-header h2 {
+    font-size: 16px;
+  }
+  
+  .printable-stats {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .printable-stat {
+    padding: 12px;
+  }
+  
+  .printable-stat-value {
+    font-size: 20px;
+  }
+  
+  .printable-table {
+    font-size: 14px;
+  }
+  
+  .printable-table th,
+  .printable-table td {
+    padding: 8px 6px;
+  }
+  
+  .printable-footer {
+    margin: 20px -20px -20px -20px;
+    padding: 15px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .printable-header h1 {
+    font-size: 18px;
+  }
+  
+  .printable-header h2 {
+    font-size: 14px;
+  }
+  
+  .printable-stat-value {
+    font-size: 18px;
+  }
+  
+  .printable-stat-label {
+    font-size: 10px;
+  }
+  
+  .printable-table {
+    font-size: 12px;
+  }
+  
+  .printable-table th,
+  .printable-table td {
+    padding: 6px 4px;
+  }
+  
+  .printable-section h3 {
+    font-size: 16px;
+  }
+}
+
+/* Animation pour le mode loading */
+.printable-loading {
+  opacity: 0.7;
+  pointer-events: none;
+  position: relative;
+}
+
+.printable-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: printable-spin 1s linear infinite;
+}
+
+@keyframes printable-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Styles pour les boutons d'impression */
+.print-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.print-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.print-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.print-button:active {
+  transform: translateY(0);
+}
+
+.print-button.primary {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+}
+
+.print-button.secondary {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  color: white;
+}
+
+.print-button.success {
+  background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+  color: white;
+}
+
+.print-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Styles pour les indicateurs de statut */
+.print-status {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.print-status.success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.print-status.error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.print-status.info {
+  background: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+.print-status.warning {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}

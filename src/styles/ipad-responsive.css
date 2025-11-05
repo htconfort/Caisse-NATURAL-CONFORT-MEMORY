@@ -1,0 +1,554 @@
+/* ===============================================
+   RESPONSIVE IPAD 16:9 - PORTRAIT ET PAYSAGE
+   =============================================== */
+
+/* Variables pour les dimensions iPad */
+:root {
+  --ipad-portrait-width: 768px;
+  --ipad-portrait-height: 1024px;
+  --ipad-landscape-width: 1024px;
+  --ipad-landscape-height: 768px;
+  --navigation-height: 60px;
+  --content-height-portrait: calc(100vh - var(--navigation-height));
+  --content-height-landscape: calc(100vh - var(--navigation-height));
+  
+  /* NOUVEAU: Variables pour optimiser la vue d'ensemble sur iPad */
+  --ipad-content-scale: 0.85;
+  --ipad-font-scale: 0.9;
+}
+
+/* ===============================================
+   OPTIMISATION TAILLE POUR IPAD
+   =============================================== */
+
+/* Détection iPad et tablettes */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+  
+  /* Réduction globale des éléments pour vue d'ensemble */
+  body {
+    font-size: calc(16px * var(--ipad-font-scale));
+    line-height: 1.4;
+  }
+  
+  /* Navigation plus compacte */
+  nav {
+    height: calc(var(--navigation-height) * var(--ipad-content-scale));
+    min-height: calc(var(--navigation-height) * var(--ipad-content-scale));
+  }
+  
+  nav button {
+    min-width: calc(120px * var(--ipad-content-scale)) !important;
+    height: calc(var(--navigation-height) * var(--ipad-content-scale)) !important;
+    padding: 0 calc(16px * var(--ipad-content-scale)) !important;
+    font-size: calc(14px * var(--ipad-font-scale));
+  }
+  
+  /* Contenu principal optimisé */
+  .main-content,
+  main {
+    height: calc(100vh - calc(var(--navigation-height) * var(--ipad-content-scale)));
+  }
+  
+  /* Grilles de produits plus compactes */
+  .products-grid,
+  [style*="gridTemplateColumns"] {
+    gap: calc(15px * var(--ipad-content-scale)) !important;
+  }
+  
+  /* Boutons et cartes plus compacts */
+  button:not(nav button) {
+    padding: calc(8px * var(--ipad-content-scale)) calc(16px * var(--ipad-content-scale));
+    font-size: calc(14px * var(--ipad-font-scale));
+  }
+  
+  /* Inputs plus compacts */
+  input, select, textarea {
+    padding: calc(8px * var(--ipad-content-scale));
+    font-size: calc(14px * var(--ipad-font-scale));
+  }
+}
+
+/* ===============================================
+   RESET ET BASE POUR IPAD
+   =============================================== */
+
+/* S'assurer que le body prend toute la hauteur */
+html, body {
+  height: 100%;
+  overflow: hidden; /* Empêche le scroll de la page principale */
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  max-width: none; /* Override du max-width: 1280px */
+  margin: 0;
+  padding: 0;
+}
+
+/* ===============================================
+   NAVIGATION RESPONSIVE OPTIMISÉE
+   =============================================== */
+
+/* Navigation principale - toujours visible */
+nav {
+  flex-shrink: 0;
+  height: var(--navigation-height);
+  min-height: var(--navigation-height);
+  z-index: 1000;
+  position: relative;
+}
+
+/* Container de navigation avec scroll horizontal optimisé */
+nav .flex {
+  height: 100%;
+  min-height: var(--navigation-height);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+nav .flex::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Boutons de navigation - tailles optimisées tactile */
+nav button {
+  min-width: 120px !important;
+  height: var(--navigation-height) !important;
+  padding: 0 16px !important;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* ===============================================
+   CONTENU PRINCIPAL RESPONSIVE
+   =============================================== */
+
+/* Container principal du contenu */
+.main-content,
+main {
+  flex: 1;
+  height: var(--content-height-portrait);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Ajustement quand le panier est ouvert */
+.main-content-with-cart {
+  padding-right: 0; /* Reset sur iPad */
+}
+
+/* ===============================================
+   PANIER FLOTTANT RESPONSIVE
+   =============================================== */
+
+/* Panier en mode normal - adapté iPad */
+.floating-cart {
+  position: fixed !important;
+  top: var(--navigation-height) !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 280px !important;
+  height: auto !important;
+  max-height: var(--content-height-portrait) !important;
+  z-index: 999 !important;
+  background: white;
+  border-left: 2px solid var(--primary-green);
+  border-top: 2px solid var(--primary-green);
+  border-radius: 8px 0 0 0;
+  overflow: hidden;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  display: block !important; /* Force l'affichage */
+  visibility: visible !important; /* Force la visibilité */
+}
+
+/* Panier minimisé */
+.floating-cart.minimized {
+  width: 60px !important;
+  top: var(--navigation-height) !important;
+  right: 0 !important; /* Force à droite */
+  bottom: 0 !important;
+  height: auto !important;
+  max-height: var(--content-height-portrait) !important;
+  position: fixed !important; /* Force position fixed */
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* Contenu du panier avec scroll interne */
+.floating-cart .cart-content {
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===============================================
+   MEDIA QUERIES SPÉCIFIQUES IPAD
+   =============================================== */
+
+/* iPad Portrait (768x1024) */
+@media screen and (min-width: 768px) and (max-width: 768px) and (orientation: portrait),
+       screen and (width: 768px) and (height: 1024px) {
+  
+  :root {
+    --content-height-portrait: calc(1024px - var(--navigation-height));
+  }
+  
+  /* Navigation en portrait - tous les onglets visibles */
+  nav button {
+    min-width: 95px !important;
+    font-size: 13px;
+    padding: 0 12px !important;
+  }
+  
+  /* Panier en portrait */
+  .floating-cart {
+    width: 260px !important;
+    max-height: calc(1024px - var(--navigation-height)) !important;
+  }
+  
+  .floating-cart.minimized {
+    width: 50px !important;
+  }
+  
+  /* Contenu principal en portrait */
+  .main-content {
+    height: calc(1024px - var(--navigation-height));
+  }
+}
+
+/* iPad Paysage (1024x768) - LE PLUS IMPORTANT */
+@media screen and (min-width: 1024px) and (max-width: 1024px) and (orientation: landscape),
+       screen and (width: 1024px) and (height: 768px) {
+  
+  :root {
+    --content-height-landscape: calc(768px - var(--navigation-height));
+  }
+  
+  /* Navigation en paysage - compacte mais tous les onglets visibles */
+  nav {
+    height: 50px !important;
+    min-height: 50px !important;
+  }
+  
+  nav button {
+    min-width: 110px !important;
+    height: 50px !important;
+    font-size: 13px;
+    padding: 0 14px !important;
+  }
+  
+  /* Panier en paysage - POSITION CRITIQUE */
+  .floating-cart {
+    top: 50px !important; /* Hauteur de nav réduite */
+    width: 250px !important;
+    max-height: calc(768px - 50px) !important; /* 718px de hauteur disponible */
+    right: 0 !important;
+    bottom: 0 !important;
+    display: block !important; /* Force l'affichage en paysage */
+    visibility: visible !important;
+    background: white !important;
+    border: 3px solid #FF0000 !important; /* Bordure rouge temporaire pour debug */
+  }
+  
+  .floating-cart.minimized {
+    width: 45px !important;
+    top: 50px !important;
+    right: 0 !important; /* Force à droite en paysage */
+    bottom: 0 !important;
+    position: fixed !important;
+    display: block !important;
+    visibility: visible !important;
+    background: white !important;
+    border: 3px solid #00FF00 !important; /* Bordure verte pour debug mode minimisé */
+  }
+  
+  /* Contenu principal en paysage */
+  .main-content {
+    height: calc(768px - 50px); /* 718px */
+  }
+  
+  /* CRITICAL: S'assurer que le contenu ne pousse pas les onglets hors écran */
+  .main-content-with-cart {
+    padding-right: 250px !important; /* Espace pour le panier */
+    width: calc(1024px - 250px) !important; /* 774px pour le contenu */
+  }
+  
+  .main-content-with-cart.cart-minimized {
+    padding-right: 45px !important;
+    width: calc(1024px - 45px) !important; /* 979px pour le contenu */
+  }
+}
+
+/* ===============================================
+   CORRECTIONS SPÉCIFIQUES POUR LES ONGLETS
+   =============================================== */
+
+/* Container des onglets - scroll si nécessaire */
+.tab-content {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px;
+  height: 100%;
+}
+
+/* Grilles de produits responsive */
+.product-grid {
+  display: grid;
+  gap: 16px;
+  padding-bottom: 20px;
+}
+
+/* Portrait : 2 colonnes */
+@media screen and (orientation: portrait) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Paysage : 3-4 colonnes selon l'espace disponible */
+@media screen and (orientation: landscape) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  /* Si panier fermé, 4 colonnes */
+  .main-content-with-cart.cart-minimized .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ===============================================
+   BOUTONS ET ÉLÉMENTS TACTILES
+   =============================================== */
+
+/* Taille minimum Apple HIG pour le tactile */
+.touch-feedback,
+button,
+.btn-primary,
+.btn-secondary {
+  min-height: 44px !important;
+  min-width: 44px !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Feedback tactile */
+.touch-feedback:active,
+button:active,
+.btn-primary:active,
+.btn-secondary:active {
+  transform: scale(0.96);
+  transition: transform 0.1s ease;
+}
+
+/* ===============================================
+   CORRECTIFS POUR ÉLÉMENTS SPÉCIFIQUES
+   =============================================== */
+
+/* Header si présent */
+header {
+  flex-shrink: 0;
+  z-index: 1001;
+}
+
+/* Modals et overlays */
+.modal-overlay,
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+
+/* Tables avec scroll */
+.table-container {
+  overflow: auto;
+  max-height: calc(100% - 100px);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ===============================================
+   DEBUGGING (À SUPPRIMER EN PRODUCTION)
+   =============================================== */
+
+/* Indicateur visuel des dimensions en dev */
+.debug-viewport {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(255, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  font-size: 10px;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+.debug-viewport::after {
+  content: attr(data-dimensions);
+}
+
+/* ===============================================
+   RESPONSIVE BREAKPOINTS SUPPLÉMENTAIRES
+   =============================================== */
+
+/* iPad Pro 11" Portrait (834x1194) */
+@media screen and (width: 834px) and (height: 1194px) {
+  nav button {
+    min-width: 104px !important;
+  }
+}
+
+/* iPad Pro 11" Paysage (1194x834) */
+@media screen and (width: 1194px) and (height: 834px) {
+  nav button {
+    min-width: 130px !important;
+  }
+  
+  .floating-cart {
+    width: 280px !important;
+  }
+  
+  .main-content-with-cart {
+    padding-right: 280px !important;
+  }
+}
+
+/* iPad Pro 12.9" Portrait (1024x1366) */
+@media screen and (width: 1024px) and (height: 1366px) {
+  nav button {
+    min-width: 128px !important;
+  }
+}
+
+/* iPad Pro 12.9" Paysage (1366x1024) */
+@media screen and (width: 1366px) and (height: 1024px) {
+  nav button {
+    min-width: 150px !important;
+  }
+  
+  .floating-cart {
+    width: 300px !important;
+  }
+  
+  .main-content-with-cart {
+    padding-right: 300px !important;
+  }
+}
+
+/* ===============================================
+   FALLBACK POUR AUTRES TAILLES
+   =============================================== */
+
+/* Écrans plus petits que iPad */
+@media screen and (max-width: 767px) {
+  nav button {
+    min-width: 80px !important;
+    font-size: 12px;
+    padding: 0 8px !important;
+  }
+  
+  .floating-cart {
+    width: 240px !important;
+  }
+}
+
+/* Écrans plus grands que iPad */
+@media screen and (min-width: 1367px) {
+  /* Garder le comportement iPad pour les écrans plus grands */
+  #root {
+    max-width: 1366px;
+    margin: 0 auto;
+  }
+}
+
+/* ===============================================
+   OPTIMISATIONS CARTES PRODUITS POUR IPAD
+   =============================================== */
+
+/* Cartes de produits plus compactes sur iPad */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+  
+  /* Grilles de produits optimisées */
+  div[style*="gridTemplateColumns: repeat(3, 1fr)"] {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: calc(10px * var(--ipad-content-scale)) !important;
+    max-width: calc(100% - 250px) !important;
+  }
+  
+  /* Cartes de produits plus compactes */
+  div[style*="minHeight: 160px"] {
+    min-height: calc(140px * var(--ipad-content-scale)) !important;
+    max-height: calc(160px * var(--ipad-content-scale)) !important;
+    padding: calc(8px * var(--ipad-content-scale)) !important;
+  }
+  
+  /* Textes dans les cartes produits */
+  div[style*="fontSize: 28px"] {
+    font-size: calc(24px * var(--ipad-font-scale)) !important;
+  }
+  
+  div[style*="fontSize: 20px"] {
+    font-size: calc(18px * var(--ipad-font-scale)) !important;
+  }
+  
+  div[style*="fontSize: 16px"] {
+    font-size: calc(14px * var(--ipad-font-scale)) !important;
+  }
+  
+  div[style*="fontSize: 14px"] {
+    font-size: calc(12px * var(--ipad-font-scale)) !important;
+  }
+  
+  /* Badges et éléments décoratifs */
+  div[style*="position: absolute"] span {
+    font-size: calc(12px * var(--ipad-font-scale)) !important;
+    padding: calc(2px * var(--ipad-content-scale)) calc(4px * var(--ipad-content-scale)) !important;
+  }
+  
+  /* Compteurs et badges de notification */
+  .mb-4.p-3 {
+    padding: calc(8px * var(--ipad-content-scale)) !important;
+    margin-bottom: calc(12px * var(--ipad-content-scale)) !important;
+  }
+  
+  /* Formulaires et inputs dans ProductsTab */
+  .mb-6 input {
+    padding: calc(6px * var(--ipad-content-scale)) !important;
+    font-size: calc(13px * var(--ipad-font-scale)) !important;
+  }
+  
+  /* Panier optimisé pour vue d'ensemble */
+  .floating-cart {
+    width: calc(250px * var(--ipad-content-scale)) !important;
+    top: calc(var(--navigation-height) * var(--ipad-content-scale)) !important;
+  }
+  
+  .floating-cart.minimized {
+    width: calc(50px * var(--ipad-content-scale)) !important;
+  }
+}

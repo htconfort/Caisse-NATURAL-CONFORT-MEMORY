@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Headers Élégants - MyConfort</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #f1f5f9 50%, #ffffff 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .test-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .vendor-header {
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+        
+        .vendor-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .vendor-icon {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .vendor-name {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .invoice-number {
+            font-weight: 600;
+            font-size: 0.95rem;
+            opacity: 0.95;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 8px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+            color: #6b7280;
+        }
+        
+        .result-box {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 2px solid #10b981;
+        }
+        
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px -1px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <a href="http://localhost:5173" class="back-btn">← Retour à l'app</a>
+    
+    <div class="container">
+        <h1>🎨 Test Headers Colorés Mode Élégant</h1>
+        
+        <div id="test-cards"></div>
+        
+        <div class="result-box">
+            <p style="margin: 0; color: #374151; font-weight: 600;">
+                ✅ Chaque header doit avoir une couleur de fond pleine correspondant à la vendeuse<br/>
+                ✅ Le texte doit être contrasté (blanc ou noir) pour une lisibilité optimale<br/>
+                ✅ Billy doit avoir un header jaune avec texte noir
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Définition des vendeuses avec leurs couleurs
+        const vendors = [
+            { name: 'Billy', color: '#FFFF99' },
+            { name: 'Sylvie', color: '#4B0082' },
+            { name: 'Lucia', color: '#8B0000' },
+            { name: 'Johan', color: '#90EE90' },
+            { name: 'Sabrina', color: '#FFB6C1' },
+            { name: 'Babette', color: '#800080' },
+            { name: 'Cathy', color: '#006400' }
+        ];
+        
+        // Fonction pour calculer le contraste
+        function getLuminance(hex) {
+            const rgb = hexToRgb(hex);
+            if (!rgb) return 0;
+            
+            const { r, g, b } = rgb;
+            const [rs, gs, bs] = [r, g, b].map(c => {
+                c = c / 255;
+                return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+            });
+            
+            return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+        }
+        
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+        
+        function getTextColor(backgroundColor, vendorName) {
+            const luminance = getLuminance(backgroundColor);
+            
+            // Règles spécifiques
+            if (['Sylvie', 'Lucia', 'Babette', 'Cathy'].includes(vendorName)) {
+                return '#ffffff';
+            }
+            if (['Johan', 'Sabrina', 'Billy'].includes(vendorName)) {
+                return '#000000';
+            }
+            
+            // Fallback automatique
+            return luminance > 0.5 ? '#000000' : '#ffffff';
+        }
+        
+        // Génération des cartes de test
+        function generateTestCards() {
+            const container = document.getElementById('test-cards');
+            
+            vendors.forEach((vendor, index) => {
+                const textColor = getTextColor(vendor.color, vendor.name);
+                const invoiceNumber = `F-${String(Math.floor(Math.random() * 1000)).padStart(3, '0')}`;
+                
+                const cardHTML = `
+                    <div class="test-card">
+                        <div class="vendor-header" style="background-color: ${vendor.color}; color: ${textColor};">
+                            <div class="vendor-info">
+                                <span class="vendor-icon">👤</span>
+                                <span class="vendor-name">${vendor.name}</span>
+                            </div>
+                            <span class="invoice-number">${invoiceNumber}</span>
+                        </div>
+                        <div class="card-content">
+                            <strong>Couleur de fond :</strong> ${vendor.color}<br/>
+                            <strong>Couleur de texte :</strong> ${textColor}<br/>
+                            <strong>Test de lisibilité :</strong> Le texte doit être parfaitement lisible sur le fond coloré.
+                        </div>
+                    </div>
+                `;
+                
+                container.innerHTML += cardHTML;
+            });
+        }
+        
+        // Générer les cartes au chargement
+        generateTestCards();
+    </script>
+</body>
+</html>

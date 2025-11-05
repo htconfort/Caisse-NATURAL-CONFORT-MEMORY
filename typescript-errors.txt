@@ -1,0 +1,86 @@
+src/App_Original.tsx(1,8): error TS6133: 'React' is declared but its value is never read.
+src/App_Original.tsx(54,10): error TS6133: 'showResetModal' is declared but its value is never read.
+src/App_Original.tsx(55,10): error TS6133: 'resetStep' is declared but its value is never read.
+src/App_Original.tsx(218,9): error TS6133: 'performReset' is declared but its value is never read.
+src/App_Original.tsx(605,16): error TS2739: Type '{ cart: ExtendedCartItem[]; cartTotal: number; clearCart: () => void; }' is missing the following properties from type 'CancellationTabProps': sales, cancelLastSale, cancelSpecificSale
+src/components/InvoiceCard_New.tsx(10,68): error TS6133: 'onStatusChange' is declared but its value is never read.
+src/components/InvoicesTabElegant.tsx(30,9): error TS6133: 'createTestInvoices' is declared but its value is never read.
+src/components/StockOverview.tsx(16,84): error TS6133: 'stats' is declared but its value is never read.
+src/components/tabs/CATab.tsx(11,54): error TS6133: 'vendorStats' is declared but its value is never read.
+src/components/tabs/stock/GeneralStockTab-Old.tsx(20,10): error TS6133: 'loading' is declared but its value is never read.
+src/components/tabs/stock/GeneralStockTab-Old.tsx(56,5): error TS2304: Cannot find name 'setStockQuantities'.
+src/components/tabs/stock/GeneralStockTab-Old.tsx(56,24): error TS7006: Parameter 'prev' implicitly has an 'any' type.
+src/components/tabs/stock/GeneralStockTab-Old.tsx(65,34): error TS2339: Property 'name' does not exist on type 'StockItem'.
+src/components/tabs/stock/GeneralStockTab-Old.tsx(77,88): error TS2339: Property 'priceTTC' does not exist on type 'StockItem'.
+src/components/tabs/stock/GeneralStockTab-Old.tsx(226,46): error TS2339: Property 'name' does not exist on type 'StockItem'.
+src/components/tabs/stock/GeneralStockTab-Old.tsx(244,33): error TS2339: Property 'name' does not exist on type 'StockItem'.
+src/components/tabs/stock/GeneralStockTab-Old.tsx(299,33): error TS2339: Property 'priceTTC' does not exist on type 'StockItem'.
+src/components/tabs/stock/GeneralStockTab-Old.tsx(299,56): error TS2339: Property 'priceTTC' does not exist on type 'StockItem'.
+src/components/tabs/stock/GeneralStockTab-Old.tsx(304,33): error TS2339: Property 'priceTTC' does not exist on type 'StockItem'.
+src/components/tabs/stock/GeneralStockTab-Old.tsx(304,77): error TS2339: Property 'priceTTC' does not exist on type 'StockItem'.
+src/components/tabs/stock/GeneralStockTab-Old.tsx(324,74): error TS2339: Property 'priceTTC' does not exist on type 'StockItem'.
+src/components/tabs/stock/PhysicalStockTab.tsx(94,43): error TS2339: Property 'performRAZ' does not exist on type 'SyncService'.
+src/components/tabs/stock/PhysicalStockTab.tsx(140,38): error TS2339: Property 'initializeEventStock' does not exist on type 'SyncService'.
+src/components/tabs/StockTab.tsx(20,5): error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size: number; style?: CSSProperties | undefined; }>'.
+  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size: number; style?: CSSProperties | undefined; }>'.
+    Types of property 'propTypes' are incompatible.
+      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size: number; style?: CSSProperties | undefined; }> | undefined'.
+        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size: number; style?: CSSProperties | undefined; }>'.
+          Types of property 'size' are incompatible.
+            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number> | undefined'.
+              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number>'.
+                Type 'string | number | null | undefined' is not assignable to type 'number'.
+                  Type 'undefined' is not assignable to type 'number'.
+src/components/tabs/StockTab.tsx(27,5): error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size: number; style?: CSSProperties | undefined; }>'.
+  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size: number; style?: CSSProperties | undefined; }>'.
+    Types of property 'propTypes' are incompatible.
+      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size: number; style?: CSSProperties | undefined; }> | undefined'.
+        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size: number; style?: CSSProperties | undefined; }>'.
+          Types of property 'size' are incompatible.
+            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number> | undefined'.
+              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number>'.
+                Type 'string | number | null | undefined' is not assignable to type 'number'.
+                  Type 'undefined' is not assignable to type 'number'.
+src/components/tabs/StockTab.tsx(34,5): error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size: number; style?: CSSProperties | undefined; }>'.
+  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size: number; style?: CSSProperties | undefined; }>'.
+    Types of property 'propTypes' are incompatible.
+      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size: number; style?: CSSProperties | undefined; }> | undefined'.
+        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size: number; style?: CSSProperties | undefined; }>'.
+          Types of property 'size' are incompatible.
+            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number> | undefined'.
+              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number>'.
+                Type 'string | number | null | undefined' is not assignable to type 'number'.
+                  Type 'undefined' is not assignable to type 'number'.
+src/components/tabs/StockTab.tsx(41,5): error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size: number; style?: CSSProperties | undefined; }>'.
+  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size: number; style?: CSSProperties | undefined; }>'.
+    Types of property 'propTypes' are incompatible.
+      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size: number; style?: CSSProperties | undefined; }> | undefined'.
+        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size: number; style?: CSSProperties | undefined; }>'.
+          Types of property 'size' are incompatible.
+            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number> | undefined'.
+              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number>'.
+                Type 'string | number | null | undefined' is not assignable to type 'number'.
+                  Type 'undefined' is not assignable to type 'number'.
+src/components/tabs/StockTabElegant.tsx(31,5): error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size: number; className?: string | undefined; }>'.
+  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size: number; className?: string | undefined; }>'.
+    Types of property 'propTypes' are incompatible.
+      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size: number; className?: string | undefined; }> | undefined'.
+        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size: number; className?: string | undefined; }>'.
+          Types of property 'size' are incompatible.
+            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number> | undefined'.
+              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number>'.
+                Type 'string | number | null | undefined' is not assignable to type 'number'.
+                  Type 'undefined' is not assignable to type 'number'.
+src/components/tabs/StockTabElegant.tsx(39,5): error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size: number; className?: string | undefined; }>'.
+  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size: number; className?: string | undefined; }>'.
+    Types of property 'propTypes' are incompatible.
+      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size: number; className?: string | undefined; }> | undefined'.
+        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size: number; className?: string | undefined; }>'.
+          Types of property 'size' are incompatible.
+            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number> | undefined'.
+              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number>'.
+                Type 'string | number | null | undefined' is not assignable to type 'number'.
+                  Type 'undefined' is not assignable to type 'number'.
+src/services/reportService.ts(502,32): error TS6133: 'productName' is declared but its value is never read.
+src/services/syncService.ts(137,11): error TS6133: 'forceApiTest' is declared but its value is never read.
+src/services/syncService.ts(868,11): error TS6133: 'mapPaymentMethod' is declared but its value is never read.

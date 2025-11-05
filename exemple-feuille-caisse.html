@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modèle Feuille de Caisse - MyConfort</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .feuille-caisse {
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 32px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            color: black;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .en-tete {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid black;
+        }
+        
+        .en-tete h1 {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0 0 8px 0;
+        }
+        
+        .en-tete h2 {
+            font-size: 20px;
+            margin: 0 0 8px 0;
+        }
+        
+        .en-tete p {
+            font-size: 16px;
+            margin: 0;
+        }
+        
+        .resume-general {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        
+        .resume-box {
+            border: 1px solid black;
+            padding: 16px;
+        }
+        
+        .resume-box h3 {
+            font-weight: bold;
+            font-size: 16px;
+            margin: 0 0 8px 0;
+        }
+        
+        .resume-box .valeur {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .section-titre {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid black;
+        }
+        
+        .tableau {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid black;
+            margin-bottom: 32px;
+        }
+        
+        .tableau th {
+            border: 1px solid black;
+            padding: 12px;
+            background: #f3f4f6;
+            font-weight: bold;
+        }
+        
+        .tableau td {
+            border: 1px solid black;
+            padding: 12px;
+        }
+        
+        .tableau .ligne-total {
+            background: #f3f4f6;
+            font-weight: bold;
+        }
+        
+        .pied-page {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid black;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        
+        .signature-ligne {
+            border-bottom: 1px solid black;
+            height: 32px;
+            margin: 16px 0 8px 0;
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                background: white;
+            }
+            
+            .feuille-caisse {
+                box-shadow: none;
+                margin: 0;
+            }
+            
+            @page {
+                margin: 2cm;
+                size: A4;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="feuille-caisse">
+        <!-- En-tête -->
+        <div class="en-tete">
+            <h1>MYCONFORT</h1>
+            <h2>FEUILLE DE CAISSE</h2>
+            <p id="date-jour"></p>
+        </div>
+
+        <!-- Résumé général -->
+        <div class="resume-general">
+            <div class="resume-box">
+                <h3>CHIFFRE D'AFFAIRES</h3>
+                <p class="valeur" id="ca-total">0,00 €</p>
+            </div>
+            <div class="resume-box">
+                <h3>NOMBRE DE VENTES</h3>
+                <p class="valeur" id="nb-ventes">0</p>
+            </div>
+            <div class="resume-box">
+                <h3>TICKET MOYEN</h3>
+                <p class="valeur" id="ticket-moyen">0,00 €</p>
+            </div>
+        </div>
+
+        <!-- CA par vendeuse avec détail des modes de paiement -->
+        <div>
+            <h3 class="section-titre">CHIFFRE D'AFFAIRES PAR VENDEUSE ET MODE DE PAIEMENT</h3>
+            <table class="tableau">
+                <thead>
+                    <tr>
+                        <th style="text-align: left; font-size: 12px;">VENDEUSE</th>
+                        <th style="text-align: right; font-size: 12px;">💳 CARTE</th>
+                        <th style="text-align: right; font-size: 12px;">💵 ESPÈCES</th>
+                        <th style="text-align: right; font-size: 12px;">📝 CHÈQUE</th>
+                        <th style="text-align: right; font-size: 12px;">🔄 MIXTE</th>
+                        <th style="text-align: right; font-size: 12px;">TOTAL (€)</th>
+                        <th style="text-align: center; font-size: 12px;">%</th>
+                    </tr>
+                </thead>
+                <tbody id="tableau-vendeuses">
+                    <!-- Les données seront ajoutées dynamiquement -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Répartition par mode de paiement -->
+        <div>
+            <h3 class="section-titre">RÉPARTITION PAR MODE DE PAIEMENT</h3>
+            <table class="tableau">
+                <thead>
+                    <tr>
+                        <th style="text-align: left;">MODE DE PAIEMENT</th>
+                        <th style="text-align: right;">MONTANT (€)</th>
+                        <th style="text-align: center;">%</th>
+                    </tr>
+                </thead>
+                <tbody id="tableau-paiements">
+                    <!-- Les données seront ajoutées dynamiquement -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pied de page -->
+        <div class="pied-page">
+            <div>
+                <p style="margin-bottom: 16px; font-weight: bold;">Responsable de caisse :</p>
+                <div class="signature-ligne"></div>
+                <p style="font-size: 12px; margin: 0;">Signature</p>
+            </div>
+            <div>
+                <p style="margin-bottom: 16px; font-weight: bold;">Date et heure de clôture :</p>
+                <p style="font-size: 16px; font-weight: bold; margin: 0;" id="heure-cloture"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Données d'exemple - Dans votre app React, ces données viennent de l'état
+        const donneesExemple = {
+            sales: [
+                { id: 1, vendorName: "Marie Dupont", totalAmount: 150.50, paymentMethod: "card", canceled: false },
+                { id: 2, vendorName: "Julie Martin", totalAmount: 89.90, paymentMethod: "cash", canceled: false },
+                { id: 3, vendorName: "Marie Dupont", totalAmount: 234.00, paymentMethod: "card", canceled: false },
+                { id: 4, vendorName: "Sophie Bernard", totalAmount: 67.80, paymentMethod: "check", canceled: false },
+                { id: 5, vendorName: "Julie Martin", totalAmount: 125.30, paymentMethod: "multi", canceled: false },
+                { id: 6, vendorName: "Marie Dupont", totalAmount: 45.60, paymentMethod: "cash", canceled: false }
+            ],
+            vendorStats: [
+                { id: 1, name: "Marie Dupont", dailySales: 430.10 },
+                { id: 2, name: "Julie Martin", dailySales: 215.20 },
+                { id: 3, name: "Sophie Bernard", dailySales: 67.80 }
+            ]
+        };
+
+        function initialiserFeuilleDeCAisse() {
+            // Mise à jour de la date
+            const maintenant = new Date();
+            document.getElementById('date-jour').textContent = maintenant.toLocaleDateString('fr-FR', {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+            
+            document.getElementById('heure-cloture').textContent = maintenant.toLocaleString('fr-FR');
+
+            // Calculs
+            const ventesValides = donneesExemple.sales.filter(sale => !sale.canceled);
+            const caTotal = ventesValides.reduce((sum, sale) => sum + sale.totalAmount, 0);
+            const nbVentes = ventesValides.length;
+            const ticketMoyen = nbVentes > 0 ? caTotal / nbVentes : 0;
+
+            // Mise à jour du résumé
+            document.getElementById('ca-total').textContent = caTotal.toFixed(2) + ' €';
+            document.getElementById('nb-ventes').textContent = nbVentes.toString();
+            document.getElementById('ticket-moyen').textContent = ticketMoyen.toFixed(2) + ' €';
+
+            // Tableau des vendeuses
+            genererTableauVendeuses(caTotal);
+            
+            // Tableau des modes de paiement
+            genererTableauPaiements(ventesValides, caTotal);
+        }
+
+        function genererTableauVendeuses(caTotal) {
+            const tbody = document.getElementById('tableau-vendeuses');
+            tbody.innerHTML = '';
+
+            // Vendeuses avec ventes
+            const vendeusesFiltrees = donneesExemple.vendorStats
+                .filter(vendor => vendor.dailySales > 0)
+                .sort((a, b) => b.dailySales - a.dailySales);
+
+            vendeusesFiltrees.forEach(vendor => {
+                // Calculer les ventes par mode de paiement pour cette vendeuse
+                const ventesVendeuse = donneesExemple.sales.filter(sale => sale.vendorName === vendor.name && !sale.canceled);
+                const paiements = {
+                    card: ventesVendeuse.filter(s => s.paymentMethod === 'card').reduce((sum, s) => sum + s.totalAmount, 0),
+                    cash: ventesVendeuse.filter(s => s.paymentMethod === 'cash').reduce((sum, s) => sum + s.totalAmount, 0),
+                    check: ventesVendeuse.filter(s => s.paymentMethod === 'check').reduce((sum, s) => sum + s.totalAmount, 0),
+                    multi: ventesVendeuse.filter(s => s.paymentMethod === 'multi').reduce((sum, s) => sum + s.totalAmount, 0)
+                };
+                
+                const row = document.createElement('tr');
+                const pourcentage = caTotal > 0 ? ((vendor.dailySales / caTotal) * 100).toFixed(1) : '0.0';
+                
+                row.innerHTML = `
+                    <td style="font-weight: 600; font-size: 12px;">${vendor.name}</td>
+                    <td style="text-align: right; font-size: 11px;">${paiements.card > 0 ? paiements.card.toFixed(2) : '-'}</td>
+                    <td style="text-align: right; font-size: 11px;">${paiements.cash > 0 ? paiements.cash.toFixed(2) : '-'}</td>
+                    <td style="text-align: right; font-size: 11px;">${paiements.check > 0 ? paiements.check.toFixed(2) : '-'}</td>
+                    <td style="text-align: right; font-size: 11px;">${paiements.multi > 0 ? paiements.multi.toFixed(2) : '-'}</td>
+                    <td style="text-align: right; font-weight: bold; font-size: 12px;">${vendor.dailySales.toFixed(2)}</td>
+                    <td style="text-align: center; font-size: 11px;">${pourcentage}%</td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            // Calcul des totaux par mode de paiement
+            const ventesValides = donneesExemple.sales.filter(sale => !sale.canceled);
+            const totauxPaiements = {
+                card: ventesValides.filter(s => s.paymentMethod === 'card').reduce((sum, s) => sum + s.totalAmount, 0),
+                cash: ventesValides.filter(s => s.paymentMethod === 'cash').reduce((sum, s) => sum + s.totalAmount, 0),
+                check: ventesValides.filter(s => s.paymentMethod === 'check').reduce((sum, s) => sum + s.totalAmount, 0),
+                multi: ventesValides.filter(s => s.paymentMethod === 'multi').reduce((sum, s) => sum + s.totalAmount, 0)
+            };
+
+            // Ligne total
+            const rowTotal = document.createElement('tr');
+            rowTotal.className = 'ligne-total';
+            rowTotal.innerHTML = `
+                <td style="font-size: 12px;">TOTAL</td>
+                <td style="text-align: right; font-size: 11px;">${totauxPaiements.card > 0 ? totauxPaiements.card.toFixed(2) : '-'}</td>
+                <td style="text-align: right; font-size: 11px;">${totauxPaiements.cash > 0 ? totauxPaiements.cash.toFixed(2) : '-'}</td>
+                <td style="text-align: right; font-size: 11px;">${totauxPaiements.check > 0 ? totauxPaiements.check.toFixed(2) : '-'}</td>
+                <td style="text-align: right; font-size: 11px;">${totauxPaiements.multi > 0 ? totauxPaiements.multi.toFixed(2) : '-'}</td>
+                <td style="text-align: right; font-size: 12px;">${caTotal.toFixed(2)}</td>
+                <td style="text-align: center; font-size: 11px;">100.0%</td>
+            `;
+            tbody.appendChild(rowTotal);
+        }
+
+        function genererTableauPaiements(ventesValides, caTotal) {
+            const tbody = document.getElementById('tableau-paiements');
+            tbody.innerHTML = '';
+
+            // Calcul par mode de paiement
+            const paiements = {
+                card: { label: '💳 CARTE BANCAIRE', amount: 0 },
+                cash: { label: '💵 ESPÈCES', amount: 0 },
+                check: { label: '📝 CHÈQUE', amount: 0 },
+                multi: { label: '🔄 MIXTE', amount: 0 }
+            };
+
+            ventesValides.forEach(sale => {
+                if (paiements[sale.paymentMethod]) {
+                    paiements[sale.paymentMethod].amount += sale.totalAmount;
+                }
+            });
+
+            // Ajout des lignes
+            Object.values(paiements).forEach(payment => {
+                const row = document.createElement('tr');
+                const pourcentage = caTotal > 0 ? ((payment.amount / caTotal) * 100).toFixed(1) : '0.0';
+                
+                row.innerHTML = `
+                    <td style="font-weight: 600;">${payment.label}</td>
+                    <td style="text-align: right; font-weight: bold;">${payment.amount.toFixed(2)}</td>
+                    <td style="text-align: center;">${pourcentage}%</td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            // Ligne total
+            const rowTotal = document.createElement('tr');
+            rowTotal.className = 'ligne-total';
+            rowTotal.innerHTML = `
+                <td>TOTAL</td>
+                <td style="text-align: right;">${caTotal.toFixed(2)}</td>
+                <td style="text-align: center;">100.0%</td>
+            `;
+            tbody.appendChild(rowTotal);
+        }
+
+        // Initialisation au chargement
+        document.addEventListener('DOMContentLoaded', initialiserFeuilleDeCAisse);
+        
+        // Simulation de mise à jour dynamique toutes les 5 secondes
+        setInterval(() => {
+            // Ajouter une vente aléatoire pour démontrer le caractère dynamique
+            const vendeuses = ["Marie Dupont", "Julie Martin", "Sophie Bernard"];
+            const paiements = ["card", "cash", "check", "multi"];
+            
+            const nouvelleVente = {
+                id: donneesExemple.sales.length + 1,
+                vendorName: vendeuses[Math.floor(Math.random() * vendeuses.length)],
+                totalAmount: Math.round((Math.random() * 200 + 10) * 100) / 100,
+                paymentMethod: paiements[Math.floor(Math.random() * paiements.length)],
+                canceled: false
+            };
+            
+            donneesExemple.sales.push(nouvelleVente);
+            
+            // Mettre à jour les stats vendeuses
+            const vendorStat = donneesExemple.vendorStats.find(v => v.name === nouvelleVente.vendorName);
+            if (vendorStat) {
+                vendorStat.dailySales += nouvelleVente.totalAmount;
+            }
+            
+            // Rafraîchir l'affichage
+            initialiserFeuilleDeCAisse();
+            
+            console.log('Nouvelle vente ajoutée:', nouvelleVente);
+        }, 5000);
+    </script>
+</body>
+</html>

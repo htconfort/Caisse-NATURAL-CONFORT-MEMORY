@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍎 iPad Viewer - MyConfort Caisse</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #1a1a1a;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            color: white;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .orientation-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            background: #007AFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .btn:hover {
+            background: #0056CC;
+        }
+        
+        .btn.active {
+            background: #34C759;
+        }
+        
+        .ipad-frame {
+            margin: 0 auto;
+            background: #333;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .screen {
+            border: 3px solid #000;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .landscape {
+            width: 1024px;
+            height: 768px;
+        }
+        
+        .portrait {
+            width: 768px;
+            height: 1024px;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+        
+        @media (max-width: 1200px) {
+            .ipad-frame {
+                transform: scale(0.8);
+            }
+        }
+        
+        @media (max-width: 1000px) {
+            .ipad-frame {
+                transform: scale(0.6);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🍎 iPad Simulator - MyConfort Caisse</h1>
+        <p>Visualisation exacte des dimensions iPad pour tester votre application</p>
+    </div>
+    
+    <div class="orientation-buttons">
+        <button class="btn active" onclick="setOrientation('landscape')">
+            🖥️ Paysage (1024×768)
+        </button>
+        <button class="btn" onclick="setOrientation('portrait')">
+            📱 Portrait (768×1024)
+        </button>
+        <button class="btn" onclick="refreshApp()">
+            🔄 Recharger
+        </button>
+    </div>
+    
+    <div class="ipad-frame">
+        <div class="screen landscape" id="screen">
+            <iframe 
+                src="http://localhost:5173" 
+                id="appFrame"
+                title="MyConfort Caisse App">
+            </iframe>
+        </div>
+    </div>
+    
+    <div class="info">
+        <p><strong>Dimensions actuelles :</strong> <span id="dimensions">1024 × 768 pixels</span></p>
+        <p><strong>Mode :</strong> <span id="mode">Paysage iPad</span></p>
+        <p>🎯 <strong>Objectif :</strong> Vérifier la visibilité du panier et des onglets navigation</p>
+    </div>
+    
+    <div class="controls">
+        <strong>⌨️ Raccourcis :</strong><br>
+        L = Paysage<br>
+        P = Portrait<br>
+        R = Recharger<br>
+        Space = Basculer
+    </div>
+
+    <script>
+        let isLandscape = true;
+        
+        function setOrientation(orientation) {
+            const screen = document.getElementById('screen');
+            const dimensions = document.getElementById('dimensions');
+            const mode = document.getElementById('mode');
+            const buttons = document.querySelectorAll('.btn');
+            
+            // Reset active state
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            if (orientation === 'portrait') {
+                screen.className = 'screen portrait';
+                dimensions.textContent = '768 × 1024 pixels';
+                mode.textContent = 'Portrait iPad';
+                buttons[1].classList.add('active');
+                isLandscape = false;
+            } else {
+                screen.className = 'screen landscape';
+                dimensions.textContent = '1024 × 768 pixels';
+                mode.textContent = 'Paysage iPad';
+                buttons[0].classList.add('active');
+                isLandscape = true;
+            }
+            
+            // Force iframe refresh to trigger responsive CSS
+            setTimeout(() => {
+                document.getElementById('appFrame').src = document.getElementById('appFrame').src;
+            }, 300);
+        }
+        
+        function refreshApp() {
+            document.getElementById('appFrame').src = 'http://localhost:5173';
+        }
+        
+        function toggleOrientation() {
+            setOrientation(isLandscape ? 'portrait' : 'landscape');
+        }
+        
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            switch(e.key.toLowerCase()) {
+                case 'l':
+                    setOrientation('landscape');
+                    break;
+                case 'p':
+                    setOrientation('portrait');
+                    break;
+                case 'r':
+                    refreshApp();
+                    break;
+                case ' ':
+                    e.preventDefault();
+                    toggleOrientation();
+                    break;
+            }
+        });
+        
+        // Auto-refresh every 60 seconds to stay in sync
+        setInterval(refreshApp, 60000);
+        
+        console.log('🍎 iPad Simulator chargé !');
+        console.log('📱 Testez maintenant la visibilité de votre panier en mode paysage');
+    </script>
+</body>
+</html>

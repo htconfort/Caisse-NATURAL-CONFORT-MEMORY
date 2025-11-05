@@ -1,0 +1,73 @@
+/* Styles pour la navigation compacte des onglets stock */
+
+.compact-stock-tab-button {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+}
+
+.compact-stock-tab-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.compact-stock-tab-button:active {
+  transform: translateY(0);
+}
+
+/* Animation pour le changement de contenu */
+.compact-stock-content {
+  animation: fadeInSlide 0.3s ease-out;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design pour mobile */
+@media (max-width: 768px) {
+  .compact-stock-tab-button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .compact-stock-tab-button span {
+    display: none;
+  }
+
+  /* Afficher seulement l'icône sur mobile */
+  .compact-stock-tab-button svg {
+    margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .compact-stock-tab-button {
+    padding: 6px 10px;
+  }
+}
+
+/* Styles pour le scrolling horizontal sur petits écrans */
+.compact-stock-tab-button::-webkit-scrollbar {
+  height: 4px;
+}
+
+.compact-stock-tab-button::-webkit-scrollbar-track {
+  background: #ffe6e0;
+  border-radius: 2px;
+}
+
+.compact-stock-tab-button::-webkit-scrollbar-thumb {
+  background: #f55d3e;
+  border-radius: 2px;
+}
+
+.compact-stock-tab-button::-webkit-scrollbar-thumb:hover {
+  background: #d94f34;
+}

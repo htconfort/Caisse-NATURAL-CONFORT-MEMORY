@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulateur iPad - MyConfort Caisse</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ipad-container {
+            position: relative;
+            background: #2d3748;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .ipad-screen {
+            width: 1024px;
+            height: 768px;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #1a1a1a;
+        }
+
+        .orientation-toggle {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .toggle-btn {
+            background: rgba(59, 130, 246, 0.9);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .toggle-btn:hover {
+            background: rgba(59, 130, 246, 1);
+            transform: translateY(-1px);
+        }
+
+        .toggle-btn.active {
+            background: rgba(34, 197, 94, 0.9);
+        }
+
+        .app-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .orientation-portrait {
+            width: 768px;
+            height: 1024px;
+        }
+
+        .controls {
+            position: absolute;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .control-group {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: white;
+            font-size: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .status-indicator {
+            position: absolute;
+            top: -30px;
+            right: 0;
+            background: rgba(34, 197, 94, 0.9);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .zoom-controls {
+            position: absolute;
+            top: -60px;
+            right: 0;
+            display: flex;
+            gap: 5px;
+        }
+
+        .zoom-btn {
+            background: rgba(99, 102, 241, 0.9);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .zoom-btn:hover {
+            background: rgba(99, 102, 241, 1);
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        .ipad-container {
+            animation: fadeInScale 0.6s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .ipad-screen {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Media queries pour l'adaptation */
+        @media (max-width: 1200px) {
+            .ipad-container {
+                transform: scale(0.8);
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .ipad-container {
+                transform: scale(0.6);
+            }
+        }
+
+        @media (max-width: 800px) {
+            .ipad-container {
+                transform: scale(0.5);
+            }
+            
+            .controls {
+                bottom: -60px;
+            }
+            
+            .orientation-toggle {
+                top: -40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ipad-container">
+        <div class="status-indicator">🟢 LIVE</div>
+        
+        <div class="orientation-toggle">
+            <button class="toggle-btn active" onclick="setOrientation('landscape')">
+                🖥️ Paysage (1024×768)
+            </button>
+            <button class="toggle-btn" onclick="setOrientation('portrait')">
+                📱 Portrait (768×1024)
+            </button>
+        </div>
+
+        <div class="zoom-controls">
+            <button class="zoom-btn" onclick="adjustZoom(-0.1)">−</button>
+            <button class="zoom-btn" onclick="adjustZoom(0.1)">+</button>
+            <button class="zoom-btn" onclick="resetZoom()">⌂</button>
+        </div>
+
+        <div class="ipad-screen" id="ipadScreen">
+            <iframe 
+                class="app-frame" 
+                src="http://localhost:5173"
+                id="appFrame"
+                title="MyConfort Caisse - Application"
+            ></iframe>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <strong>📐 Dimensions:</strong> <span id="dimensions">1024 × 768</span>
+            </div>
+            <div class="control-group">
+                <strong>📍 Position:</strong> <span id="orientation">Paysage</span>
+            </div>
+            <div class="control-group">
+                <strong>🔗 URL:</strong> localhost:5173
+            </div>
+            <div class="control-group">
+                <strong>🔍 Zoom:</strong> <span id="zoomLevel">100%</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentZoom = 1;
+
+        function setOrientation(orientation) {
+            const screen = document.getElementById('ipadScreen');
+            const dimensionsSpan = document.getElementById('dimensions');
+            const orientationSpan = document.getElementById('orientation');
+            const buttons = document.querySelectorAll('.toggle-btn');
+
+            // Reset active states
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            if (orientation === 'portrait') {
+                screen.classList.add('orientation-portrait');
+                dimensionsSpan.textContent = '768 × 1024';
+                orientationSpan.textContent = 'Portrait';
+                buttons[1].classList.add('active');
+            } else {
+                screen.classList.remove('orientation-portrait');
+                dimensionsSpan.textContent = '1024 × 768';
+                orientationSpan.textContent = 'Paysage';
+                buttons[0].classList.add('active');
+            }
+
+            // Force iframe reload to trigger responsive behavior
+            setTimeout(() => {
+                const frame = document.getElementById('appFrame');
+                frame.src = frame.src;
+            }, 500);
+        }
+
+        function adjustZoom(delta) {
+            currentZoom = Math.max(0.3, Math.min(1.5, currentZoom + delta));
+            updateZoom();
+        }
+
+        function resetZoom() {
+            currentZoom = 1;
+            updateZoom();
+        }
+
+        function updateZoom() {
+            const container = document.querySelector('.ipad-container');
+            container.style.transform = `scale(${currentZoom})`;
+            document.getElementById('zoomLevel').textContent = Math.round(currentZoom * 100) + '%';
+        }
+
+        // Auto-refresh every 30 seconds to keep sync with development
+        setInterval(() => {
+            const frame = document.getElementById('appFrame');
+            // Only refresh if the frame is loaded
+            if (frame.contentWindow) {
+                try {
+                    frame.contentWindow.location.reload();
+                } catch (e) {
+                    // Ignore cross-origin errors
+                }
+            }
+        }, 30000);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'r' || e.key === 'R') {
+                document.getElementById('appFrame').src = document.getElementById('appFrame').src;
+            } else if (e.key === 'p' || e.key === 'P') {
+                setOrientation('portrait');
+            } else if (e.key === 'l' || e.key === 'L') {
+                setOrientation('landscape');
+            } else if (e.key === '+' || e.key === '=') {
+                adjustZoom(0.1);
+            } else if (e.key === '-') {
+                adjustZoom(-0.1);
+            } else if (e.key === '0') {
+                resetZoom();
+            }
+        });
+
+        // Show keyboard shortcuts on load
+        setTimeout(() => {
+            console.log(`
+🎮 RACCOURCIS CLAVIER iPad Simulator:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📱 P = Mode Portrait (768×1024)
+🖥️ L = Mode Paysage (1024×768)
+🔄 R = Recharger l'application
+🔍 + = Zoom avant
+🔍 - = Zoom arrière  
+🏠 0 = Reset zoom (100%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            `);
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{
+  "physicalStock": [
+    {
+      "productName": "Matelas Memory Foam 160x200",
+      "category": "Matelas",
+      "currentStock": 4,
+      "reservedStock": 0,
+      "availableStock": 4,
+      "lastUpdated": "2025-08-07T09:20:42.319Z",
+      "minStockAlert": 2
+    },
+    {
+      "productName": "Oreiller ergonomique",
+      "category": "Oreillers",
+      "currentStock": 20,
+      "reservedStock": 0,
+      "availableStock": 20,
+      "lastUpdated": "2025-08-07T09:20:42.318Z",
+      "minStockAlert": 10
+    },
+    {
+      "productName": "Pack 2 oreillers confort",
+      "category": "Oreillers",
+      "currentStock": 13,
+      "reservedStock": 0,
+      "availableStock": 13,
+      "lastUpdated": "2025-08-07T09:20:42.319Z",
+      "minStockAlert": 5
+    },
+    {
+      "productName": "Couette 4 saisons 220x240",
+      "category": "Couettes",
+      "currentStock": 9,
+      "reservedStock": 0,
+      "availableStock": 9,
+      "lastUpdated": "2025-08-07T09:20:42.319Z",
+      "minStockAlert": 5
+    }
+  ],
+  "stockMovements": [
+    {
+      "id": "mov-1754558442319-9xjepoitg",
+      "productName": "Matelas Memory Foam 160x200",
+      "category": "Matelas",
+      "movementType": "deduction",
+      "quantity": 1,
+      "reason": "Facture N8N FAC-TEST-2025-001 - Client: Client Test",
+      "invoiceNumber": "FAC-TEST-2025-001",
+      "previousStock": 5,
+      "newStock": 4,
+      "timestamp": "2025-08-07T09:20:42.319Z"
+    },
+    {
+      "id": "mov-1754558442319-2jy011gp7",
+      "productName": "Pack 2 oreillers confort",
+      "category": "Oreillers",
+      "movementType": "deduction",
+      "quantity": 2,
+      "reason": "Facture N8N FAC-TEST-2025-001 - Client: Client Test",
+      "invoiceNumber": "FAC-TEST-2025-001",
+      "previousStock": 15,
+      "newStock": 13,
+      "timestamp": "2025-08-07T09:20:42.319Z"
+    },
+    {
+      "id": "mov-1754558442319-u7k5thqh4",
+      "productName": "Couette 4 saisons 220x240",
+      "category": "Couettes",
+      "movementType": "deduction",
+      "quantity": 1,
+      "reason": "Facture N8N FAC-TEST-2025-001 - Client: Client Test",
+      "invoiceNumber": "FAC-TEST-2025-001",
+      "previousStock": 10,
+      "newStock": 9,
+      "timestamp": "2025-08-07T09:20:42.319Z"
+    }
+  ],
+  "processedInvoicesIds": [
+    "test-invoice-1754558442319"
+  ]
+}

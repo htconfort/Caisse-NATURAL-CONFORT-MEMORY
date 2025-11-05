@@ -1,0 +1,288 @@
+/* Styles pour le catalogue stock - Version élégante compatible avec le système */
+
+/* Container principal */
+.stock-elegant-container {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+/* KPIs cards */
+.stat-card {
+  transition: all 0.2s ease;
+  border: 2px solid #000000;
+  background: white;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Recherche compacte */
+.search-compact {
+  transition: all 0.2s ease;
+}
+
+.search-compact:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 3px rgba(196, 209, 68, 0.2);
+}
+
+/* Tables élégantes - hérite des styles globaux .row-elegant, .cell, .pill */
+.table-scroll {
+  border-radius: 8px;
+}
+
+/* Ellipsis pour texte long (descriptions) */
+.cell-ellipsis {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: help;
+}
+
+/* Animations d'entrée */
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.general-stock-stats {
+  animation: slideInFromTop 0.4s ease-out;
+}
+
+/* Statistiques compactes - compatibilité avec l'ancien système */
+.stat-item-compact {
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+.stat-item-compact:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+  transform: translateY(-1px);
+}
+
+/* Responsive optimizations */
+@media (max-width: 1024px) {
+  .stat-item-compact {
+    padding: 3px 6px;
+  }
+  
+  .stat-item-compact div {
+    font-size: 0.85rem;
+  }
+  
+  .search-compact {
+    width: 280px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .stock-elegant-container {
+    padding: 0 8px;
+  }
+  
+  .stat-item-compact {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 60px;
+  }
+  
+  .search-compact {
+    width: 240px !important;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  .section-header > div {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* Mode compact pour tables */
+.table--compact .cell {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.table--compact .pill {
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+/* Surlignage pour produits sous seuil */
+.row-elegant[style*="FFF1F2"] {
+  border-left: 4px solid #F87171;
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Focus states améliorés pour accessibilité */
+.btn-secondary:focus,
+.input:focus {
+  outline: 2px solid var(--accent-lime);
+  outline-offset: 2px;
+}
+
+/* Optimisations tactiles iPad spécifiques */
+@media (pointer: coarse) {
+  .btn-secondary {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .touch-feedback:active {
+    transform: scale(0.95);
+  }
+  
+  .cell {
+    padding: 16px;
+  }
+}
+
+/* États interactifs pills */
+.pill {
+  transition: all 0.15s ease;
+}
+
+.pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Fin du fichier */
+    margin-bottom: 2px;
+  }
+}
+
+/* Animations pour les chiffres */
+.stat-item-compact div:first-child {
+  animation: countUp 0.6s ease-out;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Styles pour la section de recherche compacte */
+.search-compact {
+  transition: all 0.3s ease;
+}
+
+.search-compact:focus-within {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #3B82F6;
+}
+
+/* Séparateur vertical élégant */
+.separator-vertical {
+  background: linear-gradient(to bottom, transparent, #E5E7EB, transparent);
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Styles pour les titres élégants */
+.elegant-title {
+  background: linear-gradient(135deg, #1F2937, #374151);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 640px) {
+  .elegant-title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  
+  .stat-item-compact {
+    min-width: 50px;
+    padding: 2px 4px;
+  }
+}
+
+/* Styles pour la section de recherche compacte */
+.search-compact {
+  transition: all 0.3s ease;
+}
+
+.search-compact:focus-within {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #3B82F6;
+}
+
+/* Séparateur vertical élégant */
+.separator-vertical {
+  background: linear-gradient(to bottom, transparent, #E5E7EB, transparent);
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+  padding: 8px;
+}
+
+.stat-item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+  transform: translateY(-1px);
+}
+
+/* Réactivité pour très petits écrans */
+@media (max-width: 480px) {
+  .general-stock-stats .text-lg {
+    font-size: 1rem;
+  }
+  
+  .general-stock-stats .gap-3 {
+    gap: 0.5rem;
+  }
+}

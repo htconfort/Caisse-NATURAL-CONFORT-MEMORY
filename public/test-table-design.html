@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Tableau Produits - Factures</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 20px;
+            background: #f8fafc;
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px -8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+        
+        .header {
+            background: #fbbf24;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px 12px 0 0;
+            margin: -24px -24px 24px -24px;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        h3 {
+            color: #111827;
+            margin: 0 0 16px 0;
+            font-size: 1.3rem;
+        }
+        
+        .products-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .products-table thead {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+        }
+        
+        .products-table th {
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #374151;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .products-table td {
+            padding: 16px;
+            border-bottom: 1px solid #f3f4f6;
+            vertical-align: top;
+        }
+        
+        .products-table tr:hover {
+            background-color: #f9fafb;
+        }
+        
+        .products-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .product-name {
+            font-weight: 600;
+            color: #111827;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .product-badges {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .badge {
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .badge-status {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: #1e40af;
+            border: 1px solid #93c5fd;
+        }
+        
+        .badge-discount {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e;
+            border: 1px solid #fbbf24;
+        }
+        
+        .product-category {
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-style: italic;
+        }
+        
+        .quantity-value {
+            background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+            color: #374151;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-block;
+            min-width: 3rem;
+            text-align: center;
+        }
+        
+        .price-wrapper {
+            text-align: right;
+        }
+        
+        .original-price {
+            font-size: 0.9rem;
+            color: #9ca3af;
+            text-decoration: line-through;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .current-price {
+            font-weight: 600;
+            color: #059669;
+            font-size: 1.1rem;
+        }
+        
+        .payment-section {
+            margin-top: 24px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: 12px;
+            border: 1px solid #7dd3fc;
+        }
+        
+        .payment-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0c4a6e;
+            margin: 0 0 12px 0;
+        }
+        
+        .payment-method {
+            background: white;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0c4a6e;
+            border: 2px solid #bae6fd;
+            box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>🎯 Test Nouveau Design - Tableau Produits Factures</h1>
+    <p>Aperçu du nouveau design avec tableau structuré et mode de paiement repositionné</p>
+    
+    <div class="demo-card">
+        <div class="header">
+            👤 Billy - Facture F-0001
+        </div>
+        
+        <h3>Marie Dupont</h3>
+        <p>📧 marie.dupont@email.com | 📞 01 23 45 67 89</p>
+        
+        <h4>📦 Produits (3)</h4>
+        <table class="products-table">
+            <thead>
+                <tr>
+                    <th style="width: 50%;">Produit</th>
+                    <th style="width: 20%; text-align: center;">Quantité</th>
+                    <th style="width: 30%; text-align: right;">Prix</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="product-name">MATELAS BAMBOU 140 x 190</div>
+                        <div class="product-badges">
+                            <span class="badge badge-status">✅ Disponible</span>
+                        </div>
+                        <div class="product-category">📂 Literie</div>
+                    </td>
+                    <td style="text-align: center;">
+                        <span class="quantity-value">1</span>
+                    </td>
+                    <td class="price-wrapper">
+                        <span class="current-price">1800.00€</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="product-name">SURMATELAS BAMBOU 140 x 190</div>
+                        <div class="product-badges">
+                            <span class="badge badge-status">🚚 Livré</span>
+                            <span class="badge badge-discount">-10%</span>
+                        </div>
+                        <div class="product-category">📂 Literie</div>
+                    </td>
+                    <td style="text-align: center;">
+                        <span class="quantity-value">1</span>
+                    </td>
+                    <td class="price-wrapper">
+                        <span class="original-price">440.00€</span>
+                        <span class="current-price">396.00€</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="product-name">Oreiller Douceur</div>
+                        <div class="product-badges">
+                            <span class="badge badge-status">⏳ En attente</span>
+                        </div>
+                        <div class="product-category">📂 Literie</div>
+                    </td>
+                    <td style="text-align: center;">
+                        <span class="quantity-value">2</span>
+                    </td>
+                    <td class="price-wrapper">
+                        <span class="current-price">160.00€</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="payment-section">
+            <div class="payment-title">💳 Mode de règlement</div>
+            <div class="payment-method">💳 Carte bancaire</div>
+        </div>
+    </div>
+    
+    <div class="demo-card">
+        <div class="header" style="background: #a855f7;">
+            👤 Sylvie - Facture F-0002
+        </div>
+        
+        <h3>Jean Martin</h3>
+        <p>📧 jean.martin@email.com | 📞 06 12 34 56 78</p>
+        
+        <h4>📦 Produits (2)</h4>
+        <table class="products-table">
+            <thead>
+                <tr>
+                    <th style="width: 50%;">Produit</th>
+                    <th style="width: 20%; text-align: center;">Quantité</th>
+                    <th style="width: 30%; text-align: right;">Prix</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="product-name">Couette 220x240</div>
+                        <div class="product-badges">
+                            <span class="badge badge-status">✅ Disponible</span>
+                        </div>
+                        <div class="product-category">📂 Literie</div>
+                    </td>
+                    <td style="text-align: center;">
+                        <span class="quantity-value">1</span>
+                    </td>
+                    <td class="price-wrapper">
+                        <span class="current-price">300.00€</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="product-name">PLATEAU PRESTIGE 140 x 190</div>
+                        <div class="product-badges">
+                            <span class="badge badge-status">🚚 Livré</span>
+                        </div>
+                        <div class="product-category">📂 Literie</div>
+                    </td>
+                    <td style="text-align: center;">
+                        <span class="quantity-value">1</span>
+                    </td>
+                    <td class="price-wrapper">
+                        <span class="current-price">180.00€</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="payment-section">
+            <div class="payment-title">💳 Mode de règlement</div>
+            <div class="payment-method">📄 Chèque</div>
+        </div>
+    </div>
+    
+    <h2>✅ Améliorations apportées :</h2>
+    <ul>
+        <li><strong>Tableau structuré</strong> : 3 colonnes claires (Produit, Quantité, Prix)</li>
+        <li><strong>Lisibilité améliorée</strong> : Informations mieux organisées</li>
+        <li><strong>Mode de paiement</strong> : Repositionné en dessous du tableau</li>
+        <li><strong>Design moderne</strong> : Headers colorés, effets visuels</li>
+        <li><strong>Badges compacts</strong> : Statuts et remises plus discrets</li>
+        <li><strong>Responsive</strong> : Adapté aux écrans iPad</li>
+    </ul>
+</body>
+</html>

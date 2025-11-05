@@ -1,0 +1,7 @@
+# Redirects pour SPA (Single Page Application)
+# Toutes les routes non-fichiers redirigent vers index.html
+/*    /index.html   200
+
+# Routes spécifiques pour le monitoring
+/monitoring    /index.html   200
+/monitoring/   /index.html   200

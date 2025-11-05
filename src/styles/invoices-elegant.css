@@ -1,0 +1,1538 @@
+/* ===== STYLES ÉLÉGANTS POUR L'ONGLET FACTURES UNIQUEMENT ===== */
+
+/* Conteneur principal de l'onglet factures */
+.invoices-tab-elegant {
+  background: linear-gradient(135deg, 
+    #f8fafc 0%, 
+    #e2e8f0 25%, 
+    #f1f5f9 50%, 
+    #ffffff 100%
+  ) !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  padding: 2rem !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* Effet de fond subtil */
+.invoices-tab-elegant::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(135deg, 
+    rgba(var(--vendor-primary-color-rgb, 59, 130, 246), 0.05) 0%,
+    rgba(16, 185, 129, 0.03) 100%
+  );
+  z-index: 0;
+}
+
+.invoices-tab-elegant > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== HEADER SECTION ===== */
+.header-section-elegant {
+  background: rgba(255, 165, 0, 0.9) !important; /* Orange semi-transparent */
+  backdrop-filter: blur(10px) !important;
+  border-radius: 20px !important;
+  padding: 2rem !important;
+  margin-bottom: 2rem !important;
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid rgba(255, 165, 0, 0.3) !important; /* Bordure orange */
+}
+
+.header-top-elegant {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 2rem !important;
+}
+
+/* Titre élégant */
+.elegant-title {
+  font-size: 2.5rem !important;
+  font-weight: 600 !important;
+  color: #000000 !important;
+  margin: 0 !important;
+  letter-spacing: 0 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+}
+
+/* ===== NAVIGATION ===== */
+.view-navigation-elegant {
+  display: flex !important;
+  gap: 1rem !important;
+  margin-bottom: 2rem !important;
+  justify-content: center !important;
+}
+
+.nav-button-elegant {
+  padding: 1rem 2rem !important;
+  border-radius: 16px !important;
+  border: none !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.nav-button-elegant.active {
+  background: linear-gradient(135deg, var(--vendor-primary-color), var(--vendor-secondary-color)) !important;
+  color: var(--vendor-text-color) !important;
+  box-shadow: 
+    0 8px 16px -4px rgba(var(--vendor-primary-color-rgb, 59, 130, 246), 0.4),
+    0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+.nav-button-elegant.inactive {
+  background: rgba(255, 255, 255, 0.8) !important;
+  color: #374151 !important;
+  border: 2px solid rgba(var(--vendor-primary-color-rgb), 0.2) !important;
+}
+
+.nav-button-elegant:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 
+    0 12px 20px -4px rgba(var(--vendor-primary-color-rgb, 59, 130, 246), 0.3),
+    0 6px 8px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ===== STATISTIQUES ===== */
+.stats-grid-elegant {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+  gap: 1.5rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.stat-card-elegant {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 16px !important;
+  padding: 1.5rem !important;
+  text-align: center !important;
+  box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.stat-card-elegant::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--vendor-primary-color), var(--vendor-accent-color));
+}
+
+.stat-card-elegant:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 20px -4px rgba(0, 0, 0, 0.15) !important;
+}
+
+.stat-value-elegant {
+  font-size: 2.5rem !important;
+  font-weight: 900 !important;
+  color: #1f2937 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.stat-label-elegant {
+  font-size: 1rem !important;
+  color: #6b7280 !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Couleurs spécifiques par statut */
+.stat-card-elegant.pending .stat-value-elegant {
+  color: #f59e0b !important;
+}
+
+.stat-card-elegant.partial .stat-value-elegant {
+  color: var(--vendor-primary-color) !important;
+}
+
+.stat-card-elegant.available .stat-value-elegant {
+  color: #10b981 !important;
+}
+
+.stat-card-elegant.low .stat-value-elegant {
+  color: #ef4444 !important;
+}
+
+/* ===== SECTION FACTURES ===== */
+.invoices-section-elegant {
+  background: rgba(245, 93, 62, 0.9) !important; /* Couleur #F55D3E avec transparence */
+  border-radius: 20px !important;
+  padding: 2rem !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(245, 93, 62, 0.3) !important; /* Bordure assortie */
+}
+
+/* ===== FILTRES ===== */
+.invoices-filters-elegant {
+  display: flex !important;
+  gap: 1.5rem !important;
+  margin-bottom: 2rem !important;
+  flex-wrap: wrap !important;
+  align-items: end !important;
+}
+
+.filter-group-elegant {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+}
+
+.filter-label-elegant {
+  font-weight: 600 !important;
+  color: #374151 !important;
+  font-size: 0.9rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.filter-input-elegant,
+.filter-select-elegant {
+  padding: 0.75rem 1rem !important;
+  border: 2px solid rgba(var(--vendor-primary-color-rgb, 59, 130, 246), 0.2) !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  font-size: 1rem !important;
+  transition: all 0.3s ease !important;
+  min-width: 200px !important;
+}
+
+.filter-input-elegant:focus,
+.filter-select-elegant:focus {
+  outline: none !important;
+  border-color: var(--vendor-primary-color) !important;
+  box-shadow: 0 0 0 3px rgba(var(--vendor-primary-color-rgb), 0.1) !important;
+}
+
+/* ===== LOADING STATES ===== */
+.loading-state-elegant {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 400px !important;
+  color: #6b7280 !important;
+}
+
+.loading-spinner-elegant {
+  width: 50px !important;
+  height: 50px !important;
+  border: 4px solid rgba(var(--vendor-primary-color-rgb), 0.1) !important;
+  border-left: 4px solid var(--vendor-primary-color) !important;
+  border-radius: 50% !important;
+  animation: spin 1s linear infinite !important;
+  margin-bottom: 1rem !important;
+}
+
+.loading-text-elegant {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: #6b7280 !important;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--vendor-primary-color), var(--vendor-accent-color));
+  border-radius: 2px;
+}
+
+/* Navigation élégante */
+.invoices-nav-elegant {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.invoices-nav-button {
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.invoices-nav-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent
+  );
+  transition: left 0.5s ease;
+  z-index: 1;
+}
+
+.invoices-nav-button:hover::before {
+  left: 100%;
+}
+
+.invoices-nav-button.active {
+  background: linear-gradient(135deg, var(--vendor-primary-color), var(--vendor-accent-color));
+  color: var(--vendor-text-color);
+  box-shadow: 0 10px 25px rgba(var(--vendor-primary-color-rgb), 0.3);
+  transform: translateY(-2px);
+}
+
+.invoices-nav-button.inactive {
+  background: rgba(255, 255, 255, 0.9);
+  color: #1f2937;
+  backdrop-filter: blur(10px);
+  border-color: rgba(var(--vendor-primary-color-rgb), 0.2);
+}
+
+.invoices-nav-button.inactive:hover {
+  border-color: var(--vendor-primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Cartes de statistiques élégantes */
+.invoices-stats-elegant {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.invoices-stat-card {
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.invoices-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.invoices-stat-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.15);
+}
+
+.invoices-stat-card:hover::before {
+  opacity: 1;
+}
+
+.invoices-stat-value {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.invoices-stat-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 1;
+}
+
+/* Bordures colorées pour les cartes de stats */
+.invoices-stat-card.pending {
+  border-left: 6px solid #f59e0b;
+}
+
+.invoices-stat-card.partial {
+  border-left: 6px solid var(--vendor-primary-color);
+}
+
+.invoices-stat-card.available {
+  border-left: 6px solid #10b981;
+}
+
+.invoices-stat-card.low {
+  border-left: 6px solid #ef4444;
+}
+
+/* Filtres élégants */
+.invoices-filters-elegant {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.invoices-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.invoices-filter-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.invoices-filter-input,
+.invoices-filter-select {
+  padding: 1rem 1.25rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.invoices-filter-input:focus,
+.invoices-filter-select:focus {
+  outline: none;
+  border-color: var(--vendor-primary-color);
+  box-shadow: 0 0 0 4px rgba(var(--vendor-primary-color-rgb), 0.15);
+  transform: translateY(-1px);
+}
+
+.invoices-filter-input:hover,
+.invoices-filter-select:hover {
+  border-color: var(--vendor-primary-color);
+  transform: translateY(-1px);
+}
+
+/* Liste des factures avec grille */
+.invoices-list-elegant {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1400px) {
+  .invoices-list-elegant {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Cartes de factures élégantes */
+.invoice-card-elegant {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(229, 231, 235, 0.5);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.invoice-card-elegant:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.invoice-card-elegant::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.invoice-card-elegant:hover::before {
+  opacity: 1;
+}
+
+/* HEADER COLORÉ VENDEUSE */
+.vendor-header-elegant {
+  padding: 1.5rem 2rem !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700 !important;
+  font-size: 1.6rem !important;
+  margin: 0;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.vendor-header-elegant::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  opacity: 0.9;
+  z-index: -1;
+}
+
+.vendor-info-elegant {
+  display: flex;
+  align-items: center;
+  gap: 1rem !important;
+}
+
+.vendor-icon-elegant {
+  font-size: 1.8rem !important;
+  opacity: 0.9;
+}
+
+.vendor-name-elegant {
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 1.4rem !important;
+}
+
+.invoice-number-elegant {
+  font-weight: 700 !important;
+  font-size: 1.2rem !important;
+  opacity: 0.95;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.4rem 1rem !important;
+  border-radius: 8px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== CONTENU FACTURE ===== */
+.invoice-content-elegant {
+  padding: 2rem !important;
+}
+
+.client-info-elegant {
+  margin-bottom: 2rem !important;
+}
+
+.client-details-elegant {
+  margin-bottom: 1.5rem !important;
+}
+
+.client-name-elegant {
+  font-size: 1.8rem !important;
+  font-weight: 800 !important;
+  color: #1f2937;
+  margin-bottom: 0.75rem !important;
+}
+
+.client-contact-elegant {
+  color: #6b7280;
+  font-size: 1.3rem !important;
+  line-height: 1.6 !important;
+}
+
+/* ===== PRODUITS DANS LES FACTURES ===== */
+.invoice-items-elegant {
+  margin: 1.5rem 0 !important;
+}
+
+.invoice-item-elegant {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0 !important;
+  border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+  font-size: 1.2rem !important;
+}
+
+.item-name-elegant {
+  font-weight: 600 !important;
+  color: #374151;
+  flex: 1;
+  font-size: 1.2rem !important;
+}
+
+.item-quantity-elegant {
+  color: #6b7280;
+  margin: 0 1rem;
+  font-size: 1.1rem !important;
+}
+
+.item-price-elegant {
+  font-weight: 700 !important;
+  color: #1f2937;
+  font-size: 1.3rem !important;
+}
+
+/* ===== TOTAUX ===== */
+.invoice-totals-elegant {
+  margin-top: 1.5rem !important;
+  padding-top: 1.5rem !important;
+  border-top: 2px solid rgba(229, 231, 235, 0.5);
+}
+
+.total-line-elegant {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem !important;
+  font-size: 1.2rem !important;
+}
+
+.total-label-elegant {
+  font-weight: 600;
+  color: #374151;
+}
+
+.total-value-elegant {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.total-final-elegant {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  color: #059669 !important;
+  border-top: 1px solid rgba(229, 231, 235, 0.5);
+  padding-top: 0.75rem !important;
+  margin-top: 0.75rem !important;
+}
+
+.vendor-name-elegant {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.invoice-number-elegant {
+  font-weight: 600;
+  font-size: 0.95rem;
+  opacity: 0.95;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 8px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== CONTENU FACTURE ===== */
+.invoice-content-elegant {
+  padding: 1.5rem;
+}
+
+.client-info-elegant {
+  margin-bottom: 1.5rem;
+}
+
+.client-details-elegant {
+  margin-bottom: 1rem;
+}
+
+.client-name-elegant {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.client-contact-elegant {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* ===== STATUTS ET BADGES ===== */
+.status-badge-elegant {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 12px !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.status-badge-elegant.pending {
+  background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
+  color: #92400e !important;
+  border: 2px solid #f59e0b !important;
+}
+
+.status-badge-elegant.partial {
+  background: linear-gradient(135deg, var(--vendor-light-color), var(--vendor-accent-color)) !important;
+  color: var(--vendor-text-on-light) !important;
+  border: 2px solid var(--vendor-primary-color) !important;
+}
+
+.status-badge-elegant.complete {
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0) !important;
+  color: #065f46 !important;
+  border: 2px solid #10b981 !important;
+}
+
+.status-badge-elegant.sent {
+  background: linear-gradient(135deg, var(--vendor-light-color), var(--vendor-accent-color)) !important;
+  color: var(--vendor-text-on-light) !important;
+  border: 2px solid var(--vendor-primary-color) !important;
+}
+
+.status-badge-elegant.paid {
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0) !important;
+  color: #065f46 !important;
+  border: 2px solid #10b981 !important;
+}
+
+.status-badge-elegant.draft {
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb) !important;
+  color: #374151 !important;
+  border: 2px solid #6b7280 !important;
+}
+
+.status-badge-elegant.cancelled {
+  background: linear-gradient(135deg, #fee2e2, #fecaca) !important;
+  color: #991b1b !important;
+  border: 2px solid #ef4444 !important;
+}
+
+/* ===== DATE ET INFORMATIONS ===== */
+.invoice-date-elegant {
+  font-size: 1.2rem !important;
+  color: #6b7280 !important;
+  font-weight: 600 !important;
+}
+
+.invoice-notes-elegant {
+  font-size: 1.1rem !important;
+  color: #6b7280 !important;
+  font-style: italic;
+  margin-top: 1rem !important;
+  padding: 1rem !important;
+  background: rgba(249, 250, 251, 0.8);
+  border-radius: 8px;
+  border-left: 4px solid var(--vendor-primary-color);
+}
+
+/* ===== CARTES PLUS GRANDES ===== */
+.invoice-card-elegant {
+  background: white !important;
+  border-radius: 20px !important;
+  box-shadow: 
+    0 6px 12px -1px rgba(0, 0, 0, 0.12),
+    0 4px 8px -1px rgba(0, 0, 0, 0.08) !important;
+  border: 2px solid rgba(229, 231, 235, 0.5) !important;
+  overflow: hidden !important;
+  transition: all 0.3s ease !important;
+  margin-bottom: 2rem !important;
+  min-height: 400px !important;
+}
+
+.invoice-card-elegant:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 
+    0 16px 25px -5px rgba(0, 0, 0, 0.15),
+    0 8px 12px -2px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ===== ANIMATIONS ET EFFETS ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.invoice-card-elegant {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.vendor-header-elegant {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* ===== TABLEAU PRODUITS ÉLÉGANT ===== */
+.products-table-container-elegant {
+  margin-top: 1rem !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.products-table-elegant {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  background: white !important;
+  font-size: 1.1rem !important;
+}
+
+.products-table-elegant thead {
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0) !important;
+}
+
+.products-table-elegant th {
+  padding: 1.2rem 1rem !important;
+  text-align: left !important;
+  font-weight: 600 !important;
+  color: #000000 !important; /* TOUJOURS NOIR pour les headers de colonnes */
+  font-size: 1rem !important;
+  border-bottom: 2px solid #e5e7eb !important;
+}
+
+/* Règle spécifique pour forcer le noir sur tous les headers de colonnes */
+.products-table-elegant thead th {
+  color: #000000 !important; /* Force le noir même avec styles inline */
+}
+
+.product-col-elegant {
+  width: 50% !important;
+}
+
+.quantity-col-elegant {
+  width: 20% !important;
+  text-align: center !important;
+}
+
+.price-col-elegant {
+  width: 30% !important;
+  text-align: right !important;
+}
+
+.product-row-elegant {
+  border-bottom: 1px solid #f3f4f6 !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.product-row-elegant:hover {
+  background-color: #f9fafb !important;
+}
+
+.product-row-elegant:last-child {
+  border-bottom: none !important;
+}
+
+.product-cell-elegant,
+.quantity-cell-elegant,
+.price-cell-elegant {
+  padding: 1.2rem 1rem !important;
+  vertical-align: top !important;
+}
+
+.product-name-wrapper-elegant {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+}
+
+.product-name-elegant {
+  font-weight: 600 !important;
+  color: #111827 !important;
+  font-size: 1.1rem !important;
+  line-height: 1.4 !important;
+}
+
+.product-badges-elegant {
+  display: flex !important;
+  gap: 0.5rem !important;
+  flex-wrap: wrap !important;
+}
+
+.status-badge-small-elegant {
+  background: linear-gradient(135deg, var(--vendor-light-color, #dbeafe), rgba(255, 255, 255, 0.9)) !important;
+  color: var(--vendor-primary-color, #1e40af) !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 6px !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  border: 1px solid var(--vendor-primary-color, #93c5fd) !important;
+}
+
+.discount-badge-small-elegant {
+  background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
+  color: #92400e !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 6px !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  border: 1px solid #fbbf24 !important;
+}
+
+.product-category-elegant {
+  font-size: 0.9rem !important;
+  color: #6b7280 !important;
+  font-style: italic !important;
+}
+
+.quantity-cell-elegant {
+  text-align: center !important;
+}
+
+.quantity-value-elegant {
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb) !important;
+  color: #374151 !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  display: inline-block !important;
+  min-width: 3rem !important;
+  text-align: center !important;
+}
+
+.price-cell-elegant {
+  text-align: right !important;
+}
+
+.price-wrapper-elegant {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.25rem !important;
+  align-items: flex-end !important;
+}
+
+.original-price-elegant {
+  font-size: 0.9rem !important;
+  color: #9ca3af !important;
+  text-decoration: line-through !important;
+}
+
+.current-price-elegant {
+  font-weight: 600 !important;
+  color: #059669 !important;
+  font-size: 1.1rem !important;
+}
+
+/* ===== SECTION MODE DE PAIEMENT ===== */
+.payment-section-elegant {
+  margin-top: 1.5rem !important;
+  padding: 1.2rem !important;
+  background: linear-gradient(135deg, var(--vendor-light-color, #f0f9ff), rgba(255, 255, 255, 0.9)) !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--vendor-primary-color, #7dd3fc) !important;
+}
+
+.payment-title-elegant {
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  color: var(--vendor-primary-color, #0c4a6e) !important;
+  margin: 0 0 0.8rem 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.payment-method-elegant {
+  background: white !important;
+  padding: 1rem 1.2rem !important;
+  border-radius: 8px !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: #0c4a6e !important;
+  border: 2px solid #bae6fd !important;
+  box-shadow: 
+    0 2px 4px -1px rgba(0, 0, 0, 0.1),
+    0 1px 2px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ===== NOUVEAUX STYLES POUR DÉTAILS DE RÈGLEMENT ===== */
+
+/* Conteneur principal des détails de paiement */
+.payment-details-elegant {
+  background: white !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Header du mode de paiement */
+.payment-method-header-elegant {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 1rem 1.2rem !important;
+  background: linear-gradient(135deg, var(--vendor-light-color, #dbeafe), rgba(255, 255, 255, 0.9)) !important;
+  border-bottom: 1px solid var(--vendor-primary-color, #93c5fd) !important;
+}
+
+.payment-method-name-elegant {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  color: var(--vendor-primary-color, #1e40af) !important;
+}
+
+.payment-status-badge-elegant {
+  padding: 0.4rem 0.8rem !important;
+  border-radius: 20px !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.payment-status-badge-elegant.pending {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+  border: 1px solid #f59e0b !important;
+}
+
+.payment-status-badge-elegant.partial {
+  background: var(--vendor-light-color) !important;
+  color: var(--vendor-text-on-light) !important;
+  border: 1px solid var(--vendor-primary-color) !important;
+}
+
+.payment-status-badge-elegant.completed {
+  background: #d1fae5 !important;
+  color: #065f46 !important;
+  border: 1px solid #10b981 !important;
+}
+
+.payment-status-badge-elegant.overdue {
+  background: #fee2e2 !important;
+  color: #991b1b !important;
+  border: 1px solid #ef4444 !important;
+}
+
+/* Section des montants */
+.payment-amounts-elegant {
+  padding: 1rem 1.2rem !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+.payment-amount-row-elegant {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.payment-amount-row-elegant:last-child {
+  margin-bottom: 0 !important;
+}
+
+.payment-label-elegant {
+  font-size: 0.95rem !important;
+  color: #6b7280 !important;
+  font-weight: 500 !important;
+}
+
+.payment-value-elegant {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+}
+
+.payment-value-elegant.paid {
+  color: #059669 !important;
+}
+
+.payment-value-elegant.remaining {
+  color: #dc2626 !important;
+}
+
+/* ===== DÉTAILS DES CHÈQUES ===== */
+.check-details-elegant {
+  padding: 1rem 1.2rem !important;
+  background: #f8fafc !important;
+  border-top: 1px solid #e5e7eb !important;
+}
+
+.check-details-title-elegant {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+  margin: 0 0 1rem 0 !important;
+  padding-bottom: 0.5rem !important;
+  border-bottom: 2px solid #e5e7eb !important;
+}
+
+/* Résumé des chèques */
+.check-summary-elegant {
+  background: white !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+  margin-bottom: 1rem !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.check-info-row-elegant {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 0.4rem !important;
+}
+
+.check-info-row-elegant:last-child {
+  margin-bottom: 0 !important;
+}
+
+.check-label-elegant {
+  font-size: 0.9rem !important;
+  color: #6b7280 !important;
+  font-weight: 500 !important;
+}
+
+.check-value-elegant {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+}
+
+.check-value-elegant.received {
+  color: #059669 !important;
+}
+
+.check-value-elegant.pending {
+  color: #d97706 !important;
+}
+
+/* Liste des chèques individuels */
+.checks-list-elegant {
+  margin-top: 1rem !important;
+}
+
+.checks-list-title-elegant {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+  margin: 0 0 0.8rem 0 !important;
+}
+
+.checks-grid-elegant {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+  gap: 0.8rem !important;
+}
+
+.check-item-elegant {
+  background: white !important;
+  border-radius: 8px !important;
+  padding: 0.8rem !important;
+  border: 2px solid #e5e7eb !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.3rem !important;
+}
+
+.check-item-elegant.received {
+  border-color: #10b981 !important;
+  background: linear-gradient(135deg, #d1fae5, #ecfdf5) !important;
+}
+
+.check-item-elegant.pending {
+  border-color: #f59e0b !important;
+  background: linear-gradient(135deg, #fef3c7, #fffbeb) !important;
+}
+
+.check-number-elegant {
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  color: #6b7280 !important;
+  text-transform: uppercase !important;
+}
+
+.check-amount-elegant {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  color: #1f2937 !important;
+}
+
+.check-status-elegant {
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  padding: 0.2rem 0.5rem !important;
+  border-radius: 12px !important;
+  text-align: center !important;
+}
+
+.check-item-elegant.received .check-status-elegant {
+  background: #d1fae5 !important;
+  color: #065f46 !important;
+}
+
+.check-item-elegant.pending .check-status-elegant {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+}
+
+/* Caractéristiques des chèques - Version simplifiée */
+.check-characteristics-elegant {
+  margin-top: 1rem !important;
+  padding: 0.8rem !important;
+  background: var(--vendor-light-color) !important;
+  border-radius: 8px !important;
+  border-left: 4px solid var(--vendor-primary-color) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.check-characteristics-label-elegant {
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+}
+
+.check-characteristics-text-elegant {
+  font-size: 0.9rem !important;
+  color: #374151 !important;
+  font-weight: 500 !important;
+}
+
+/* Styles pour les infos simplifiées de transaction */
+.transaction-info-simple {
+  margin-top: 1rem !important;
+  padding: 0.6rem !important;
+  background: #f8fafc !important;
+  border-radius: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.transaction-info-simple .transaction-label-elegant {
+  font-size: 0.85rem !important;
+  font-weight: 500 !important;
+  color: #6b7280 !important;
+}
+
+.transaction-info-simple .transaction-value-elegant {
+  font-size: 0.85rem !important;
+  color: #374151 !important;
+  font-family: monospace !important;
+}
+
+/* Styles pour les infos simplifiées d'échelonnement */
+.installment-info-simple {
+  margin-top: 1rem !important;
+  padding: 0.6rem !important;
+  background: #fef3c7 !important;
+  border-radius: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.installment-info-simple .installment-label-elegant {
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+}
+
+.installment-info-simple .installment-value-elegant {
+  font-size: 0.9rem !important;
+  color: #374151 !important;
+  font-weight: 500 !important;
+}
+
+/* Prochaine échéance */
+.next-check-date-elegant {
+  margin-top: 1rem !important;
+  padding: 0.8rem !important;
+  background: #fff7ed !important;
+  border-radius: 8px !important;
+  border-left: 4px solid #f59e0b !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.next-check-label-elegant {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  color: #92400e !important;
+}
+
+.next-check-date-value-elegant {
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  color: #c2410c !important;
+}
+
+/* ===== DÉTAILS TRANSACTIONS (VIREMENT/CB) ===== */
+.transaction-details-elegant {
+  padding: 1rem 1.2rem !important;
+  background: #f8fafc !important;
+  border-top: 1px solid #e5e7eb !important;
+}
+
+.transaction-details-title-elegant {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+  margin: 0 0 1rem 0 !important;
+  padding-bottom: 0.5rem !important;
+  border-bottom: 2px solid #e5e7eb !important;
+}
+
+.transaction-info-row-elegant {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 0.5rem !important;
+  padding: 0.5rem !important;
+  background: white !important;
+  border-radius: 6px !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.transaction-info-row-elegant:last-child {
+  margin-bottom: 0 !important;
+}
+
+.transaction-label-elegant {
+  font-size: 0.9rem !important;
+  color: #6b7280 !important;
+  font-weight: 500 !important;
+}
+
+.transaction-value-elegant {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+  font-family: 'Courier New', monospace !important;
+}
+
+/* ===== DÉTAILS ÉCHELONNEMENT ===== */
+.installments-details-elegant {
+  padding: 1rem 1.2rem !important;
+  background: #f8fafc !important;
+  border-top: 1px solid #e5e7eb !important;
+}
+
+.installments-details-title-elegant {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+  margin: 0 0 1rem 0 !important;
+  padding-bottom: 0.5rem !important;
+  border-bottom: 2px solid #e5e7eb !important;
+}
+
+.installments-summary-elegant {
+  background: white !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.installment-info-row-elegant {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.installment-info-row-elegant:last-child {
+  margin-bottom: 0 !important;
+}
+
+.installment-label-elegant {
+  font-size: 0.9rem !important;
+  color: #6b7280 !important;
+  font-weight: 500 !important;
+}
+
+.installment-value-elegant {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+}
+
+.installment-value-elegant.paid {
+  color: #059669 !important;
+}
+
+/* ===== NOTES DE RÈGLEMENT ===== */
+.payment-notes-elegant {
+  padding: 1rem 1.2rem !important;
+  background: #f9fafb !important;
+  border-top: 1px solid #e5e7eb !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+}
+
+.payment-notes-label-elegant {
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+}
+
+.payment-notes-text-elegant {
+  font-size: 0.9rem !important;
+  color: #000000 !important; /* NOIR pour les notes comme demandé */
+  font-style: italic !important;
+  line-height: 1.4 !important;
+  background: white !important;
+  padding: 0.8rem !important;
+  border-radius: 6px !important;
+  border-left: 3px solid #d1d5db !important;
+}
+
+/* ===== THÉMATISATION COULEURS VENDEUR ===== */
+
+/* Conteneur principal pour les détails de paiement avec couleurs vendeur */
+.payment-details-vendor-themed {
+  --default-text: #374151;
+  --default-bg: #f9fafb;
+  --default-border: #e5e7eb;
+}
+
+/* Style thématique pour les badges de statut */
+.status-badge-small-elegant[style*="background"] {
+  /* Les couleurs sont appliquées directement via style inline avec contraste automatique */
+  border: none !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.discount-badge-small-elegant[style*="background"] {
+  /* Les couleurs sont appliquées directement via style inline avec contraste automatique */
+  border: none !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Méthode de paiement avec couleur vendeur */
+.payment-details-vendor-themed .payment-method-elegant {
+  background: var(--vendor-light-color, var(--default-bg)) !important;
+  color: var(--vendor-text-on-light, var(--default-text)) !important;
+  border-left: 4px solid var(--vendor-primary-color, #3b82f6) !important;
+}
+
+/* Informations de paiement avec couleur vendeur */
+.payment-details-vendor-themed .payment-info-elegant {
+  border-top: 1px solid var(--vendor-primary-color, var(--default-border)) !important;
+}
+
+/* Détails des chèques avec couleur vendeur */
+.payment-details-vendor-themed .check-characteristics-elegant {
+  background: var(--vendor-light-color, var(--default-bg)) !important;
+  border-left: 3px solid var(--vendor-primary-color, #3b82f6) !important;
+}
+
+.payment-details-vendor-themed .check-characteristics-label-elegant {
+  color: var(--vendor-primary-color, #3b82f6) !important;
+}
+
+.payment-details-vendor-themed .check-characteristics-text-elegant {
+  color: var(--vendor-text-on-light, var(--default-text)) !important;
+}
+
+/* Détails des transactions avec couleur vendeur */
+.payment-details-vendor-themed .transaction-details-elegant {
+  background: var(--vendor-light-color, var(--default-bg)) !important;
+  border-left: 3px solid var(--vendor-primary-color, #3b82f6) !important;
+}
+
+.payment-details-vendor-themed .transaction-label-elegant {
+  color: var(--vendor-primary-color, #3b82f6) !important;
+}
+
+.payment-details-vendor-themed .transaction-value-elegant {
+  color: var(--vendor-text-on-light, var(--default-text)) !important;
+}
+
+/* Détails des échelonnements avec couleur vendeur */
+.payment-details-vendor-themed .installments-details-elegant {
+  background: var(--vendor-light-color, var(--default-bg)) !important;
+  border-left: 3px solid var(--vendor-primary-color, #3b82f6) !important;
+}
+
+.payment-details-vendor-themed .installment-label-elegant {
+  color: var(--vendor-primary-color, #3b82f6) !important;
+}
+
+.payment-details-vendor-themed .installment-value-elegant {
+  color: var(--vendor-text-on-light, var(--default-text)) !important;
+}
+
+/* Notes de paiement avec couleur vendeur */
+.payment-details-vendor-themed .payment-notes-elegant {
+  background: var(--vendor-light-color, var(--default-bg)) !important;
+  border-top: 1px solid var(--vendor-primary-color, var(--default-border)) !important;
+}
+
+.payment-details-vendor-themed .payment-notes-label-elegant {
+  color: var(--vendor-primary-color, #3b82f6) !important;
+}
+
+.payment-details-vendor-themed .payment-notes-text-elegant {
+  color: #000000 !important; /* NOIR pour les notes comme demandé */
+  border-left: 3px solid var(--vendor-primary-color, #3b82f6) !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ===== RESPONSIVE POUR THÉMATISATION ===== */
+@media (max-width: 768px) {
+  .payment-details-vendor-themed .payment-method-elegant,
+  .payment-details-vendor-themed .check-characteristics-elegant,
+  .payment-details-vendor-themed .transaction-details-elegant,
+  .payment-details-vendor-themed .installments-details-elegant {
+    border-left-width: 2px !important;
+  }
+}
